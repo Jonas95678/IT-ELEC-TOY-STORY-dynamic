@@ -259,10 +259,10 @@ $isAdmin = isset($_SESSION['username']);
                     <h3 class="cinematic-card-title"><i class="fas fa-history"></i> Timeline</h3>
                     <div class="timeline cinematic-timeline">
                         <?php foreach ($timeline as $t): ?>
-                        <div class="timeline-item cinematic-timeline-item" data-year="<?php echo $t['year']; ?>">
-                            <span class="year"><?php echo $t['year']; ?></span>
-                            <span class="event"><?php echo htmlspecialchars($t['event']); ?></span>
-                            <span class="timeline-detail"><?php echo htmlspecialchars($t['detail']); ?></span>
+                        <div class="timeline-item cinematic-timeline-item" data-year="<?php echo $t['year'] ?? ''; ?>">
+                            <span class="year"><?php echo $t['year'] ?? ''; ?></span>
+                            <span class="event"><?php echo htmlspecialchars($t['event'] ?? ''); ?></span>
+                            <span class="timeline-detail"><?php echo htmlspecialchars($t['detail'] ?? ''); ?></span>
                         </div>
                         <?php endforeach; ?>
                     </div>
@@ -331,19 +331,19 @@ $isAdmin = isset($_SESSION['username']);
                     <?php foreach ($movies as $movie): ?>
                     <div class="movie-card" data-tilt>
                         <div class="movie-poster">
-                            <img src="<?php echo htmlspecialchars($movie['poster_url']); ?>"
-                                 alt="<?php echo htmlspecialchars($movie['title']); ?>"
+                            <img src="<?php echo htmlspecialchars($movie['poster_url'] ?? 'img/toystory1.webp'); ?>"
+                                 alt="<?php echo htmlspecialchars($movie['title'] ?? 'Unknown Movie'); ?>"
                                  class="movie-poster-img"
                                  onerror="this.src='img/toystory1.webp'">
-                            <div class="year-badge"><?php echo $movie['release_year']; ?></div>
+                            <div class="year-badge"><?php echo $movie['release_year'] ?? ''; ?></div>
                             <div class="play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <div class="movie-info">
-                            <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
-                            <p class="movie-tagline"><?php echo htmlspecialchars($movie['tagline']); ?></p>
+                            <h3><?php echo htmlspecialchars($movie['title'] ?? 'Unknown'); ?></h3>
+                            <p class="movie-tagline"><?php echo htmlspecialchars($movie['tagline'] ?? ''); ?></p>
                             <div class="movie-meta">
-                                <span><i class="fas fa-clock"></i> <?php echo $movie['runtime']; ?> min</span>
-                                <span><i class="fas fa-star"></i> <?php echo $movie['rating']; ?></span>
+                                <span><i class="fas fa-clock"></i> <?php echo $movie['runtime'] ?? ''; ?> min</span>
+                                <span><i class="fas fa-star"></i> <?php echo $movie['rating'] ?? ''; ?></span>
                             </div>
                         </div>
                     </div>
@@ -374,18 +374,18 @@ $isAdmin = isset($_SESSION['username']);
             <div class="characters-grid">
                 <?php if (!empty($characters)): ?>
                     <?php foreach ($characters as $char): ?>
-                    <div class="character-card <?php echo htmlspecialchars($char['css_class']); ?>">
+                    <div class="character-card <?php echo htmlspecialchars($char['css_class'] ?? ''); ?>">
                         <div class="character-avatar">
-                            <img src="<?php echo htmlspecialchars($char['avatar_url']); ?>"
-                                 alt="<?php echo htmlspecialchars($char['name']); ?>"
+                            <img src="<?php echo htmlspecialchars($char['avatar_url'] ?? 'img/woody.jpg'); ?>"
+                                 alt="<?php echo htmlspecialchars($char['name'] ?? 'Unknown'); ?>"
                                  onerror="this.src='img/woody.jpg'">
                         </div>
                         <div class="character-overlay"></div>
                         <div class="character-info">
-                            <h3><?php echo htmlspecialchars($char['name']); ?></h3>
-                            <p class="character-role"><?php echo htmlspecialchars($char['role']); ?></p>
-                            <p class="character-quote"><?php echo htmlspecialchars($char['quote']); ?></p>
-                            <p class="character-description"><?php echo htmlspecialchars($char['description']); ?></p>
+                            <h3><?php echo htmlspecialchars($char['name'] ?? 'Unknown'); ?></h3>
+                            <p class="character-role"><?php echo htmlspecialchars($char['role'] ?? ''); ?></p>
+                            <p class="character-quote"><?php echo htmlspecialchars($char['quote'] ?? ''); ?></p>
+                            <p class="character-description"><?php echo htmlspecialchars($char['description'] ?? ''); ?></p>
                         </div>
                     </div>
                     <?php endforeach; ?>
