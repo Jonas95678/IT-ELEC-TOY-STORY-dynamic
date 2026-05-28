@@ -214,7 +214,7 @@ $displayChars   = mysqli_num_rows(mysqli_query($conn, "SELECT id FROM $tablechar
                     </div>
 
                     <div class="table-container glassmorphism-card">
-                        <table class="admin-table table table-hover mb-0">
+                        <table class="admin-table table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -306,7 +306,7 @@ $displayChars   = mysqli_num_rows(mysqli_query($conn, "SELECT id FROM $tablechar
                     </div>
 
                     <div class="table-container glassmorphism-card">
-                        <table class="admin-table table table-hover mb-0">
+                        <table class="admin-table table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
                                     <th>ID</th>
