@@ -321,25 +321,32 @@ $displayChars   = mysqli_num_rows(mysqli_query($conn, "SELECT id FROM $tablechar
                             <tbody>
                             <?php
                             $cq = mysqli_query($conn, "SELECT * FROM $tablechar ORDER BY id ASC");
-                            if (mysqli_num_rows($cq) > 0):
+                            if ($cq && mysqli_num_rows($cq) > 0):
                                 while ($c = mysqli_fetch_assoc($cq)):
+                                    // Ensure all expected keys exist with defaults
+                                    $charId = $c['id'] ?? 'N/A';
+                                    $charName = $c['name'] ?? 'Unknown';
+                                    $charRole = $c['role'] ?? 'N/A';
+                                    $charQuote = $c['quote'] ?? '';
+                                    $charAvatar = $c['avatar_url'] ?? 'img/woody.jpg';
+                                    $charDisplayed = $c['is_displayed'] ?? 0;
                             ?>
                             <tr>
-                                <td><?php echo $c['id']; ?></td>
+                                <td><?php echo $charId; ?></td>
                                 <td>
                                     <div class="avatar-preview">
-                                        <img src="<?php echo htmlspecialchars($c['avatar_url']); ?>"
-                                             alt="<?php echo htmlspecialchars($c['name']); ?>"
+                                        <img src="<?php echo htmlspecialchars($charAvatar); ?>"
+                                             alt="<?php echo htmlspecialchars($charName); ?>"
                                              onerror="this.src='img/woody.jpg'">
                                     </div>
                                 </td>
-                                <td><strong><?php echo htmlspecialchars($c['name']); ?></strong></td>
-                                <td><?php echo htmlspecialchars($c['role']); ?></td>
+                                <td><strong><?php echo htmlspecialchars($charName); ?></strong></td>
+                                <td><?php echo htmlspecialchars($charRole); ?></td>
                                 <td style="font-style:italic; color:rgba(255,255,255,.7); font-size:.85rem;">
-                                    <?php echo htmlspecialchars(substr($c['quote'], 0, 40)) . (strlen($c['quote']) > 40 ? '...' : ''); ?>
+                                    <?php echo htmlspecialchars(substr($charQuote, 0, 40)) . (strlen($charQuote) > 40 ? '...' : ''); ?>
                                 </td>
                                 <td>
-                                    <?php if ($c['is_displayed']): ?>
+                                    <?php if ($charDisplayed): ?>
                                         <span class="badge-on"><i class="fas fa-eye me-1"></i>Shown</span>
                                     <?php else: ?>
                                         <span class="badge-off"><i class="fas fa-eye-slash me-1"></i>Hidden</span>
@@ -348,20 +355,20 @@ $displayChars   = mysqli_num_rows(mysqli_query($conn, "SELECT id FROM $tablechar
                                 <td class="text-center">
                                     <div class="action-buttons d-flex gap-1 justify-content-center flex-wrap">
                                         <!-- Display Toggle -->
-                                        <a href="char_toggle.php?id=<?php echo $c['id']; ?>"
-                                           class="btn btn-sm <?php echo $c['is_displayed'] ? 'btn-toggle-on' : 'btn-toggle-off'; ?>"
-                                           title="<?php echo $c['is_displayed'] ? 'Hide from website' : 'Show on website'; ?>"
+                                        <a href="char_toggle.php?id=<?php echo $charId; ?>"
+                                           class="btn btn-sm <?php echo $charDisplayed ? 'btn-toggle-on' : 'btn-toggle-off'; ?>"
+                                           title="<?php echo $charDisplayed ? 'Hide from website' : 'Show on website'; ?>"
                                            style="border-radius:8px; padding:4px 10px;">
-                                            <i class="fas fa-<?php echo $c['is_displayed'] ? 'eye-slash' : 'eye'; ?>"></i>
-                                            <?php echo $c['is_displayed'] ? 'Hide' : 'Show'; ?>
+                                            <i class="fas fa-<?php echo $charDisplayed ? 'eye-slash' : 'eye'; ?>"></i>
+                                            <?php echo $charDisplayed ? 'Hide' : 'Show'; ?>
                                         </a>
                                         <!-- Edit -->
-                                        <a href="char_edit.php?id=<?php echo $c['id']; ?>"
+                                        <a href="char_edit.php?id=<?php echo $charId; ?>"
                                            class="btn btn-sm btn-warning" style="border-radius:8px; padding:4px 10px;">
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
                                         <!-- Delete -->
-                                        <a href="char_delete.php?id=<?php echo $c['id']; ?>"
+                                        <a href="char_delete.php?id=<?php echo $charId; ?>"
                                            class="btn btn-sm btn-danger" style="border-radius:8px; padding:4px 10px;"
                                            onclick="return confirm('Delete this character?');">
                                             <i class="fas fa-trash"></i> Delete
