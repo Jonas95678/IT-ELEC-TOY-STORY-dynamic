@@ -415,6 +415,7 @@
     overflow-y: auto;
     transition: transform 0.3s ease, width 0.3s ease;
     z-index: 100;
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .admin-sidebar.collapsed {
@@ -427,6 +428,7 @@
     align-items: center;
     gap: 1rem;
     border-bottom: 1px solid var(--glass-border);
+    background: rgba(244, 197, 66, 0.05);
 }
 
 .sidebar-logo {
@@ -498,6 +500,7 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    margin-bottom: 0.5rem;
 }
 
 .nav-link i {
@@ -526,6 +529,7 @@
     background: var(--gradient-woody);
     color: var(--midnight-blue);
     box-shadow: 0 0 20px rgba(244, 197, 66, 0.4);
+    border-left: 3px solid var(--woody-yellow);
 }
 
 .nav-item.active .nav-link i {
@@ -544,6 +548,7 @@
 .sidebar-footer {
     padding: 1.5rem;
     border-top: 1px solid var(--glass-border);
+    background: rgba(244, 197, 66, 0.05);
 }
 
 /* Main Content */
@@ -903,6 +908,10 @@
     background: rgba(255, 255, 255, 0.02) !important;
 }
 
+.admin-table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
 .admin-table tbody tr:hover {
     background: rgba(255, 255, 255, 0.08) !important;
     box-shadow: inset 0 0 20px rgba(244, 197, 66, 0.05);
@@ -912,6 +921,11 @@
 .table-hover tbody tr:hover {
     background: rgba(255, 255, 255, 0.08) !important;
     color: var(--text-cream);
+}
+
+/* Bootstrap table-striped compatibility */
+.table-striped tbody tr:nth-of-type(odd) {
+    background: rgba(255, 255, 255, 0.03) !important;
 }
 
 /* Rating Badge */
