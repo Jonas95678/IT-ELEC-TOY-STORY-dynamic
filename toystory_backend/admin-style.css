@@ -493,9 +493,9 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.2rem;
-    color: var(--moonlight-silver);
+    color: #ffffff !important;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     border-radius: var(--radius-medium);
     transition: all 0.3s ease;
     position: relative;
@@ -897,7 +897,7 @@
 
 .admin-table td {
     padding: 1.2rem 1.5rem;
-    color: var(--text-cream);
+    color: #ffffff !important;
     border-bottom: 1px solid var(--glass-border);
     vertical-align: middle;
     background: transparent !important;
@@ -920,7 +920,7 @@
 /* Bootstrap table-hover compatibility */
 .table-hover tbody tr:hover {
     background: rgba(255, 255, 255, 0.08) !important;
-    color: var(--text-cream);
+    color: #ffffff !important;
 }
 
 /* Bootstrap table-striped compatibility */
